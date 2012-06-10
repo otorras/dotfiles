@@ -2,14 +2,12 @@ autoload colors && colors
 # cheers, @ehrenmurdick
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
-export GIT=/usr/local/git/bin/git
-
 git_branch() {
-  echo $($GIT symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
 git_dirty() {
-  st=$($GIT status 2>/dev/null | tail -n 1)
+  st=$(git status 2>/dev/null | tail -n 1)
   if [[ $st == "" ]]
   then
     echo ""
@@ -24,13 +22,13 @@ git_dirty() {
 }
 
 git_prompt_info () {
- ref=$($GIT symbolic-ref HEAD 2>/dev/null) || return
+ ref=$(git symbolic-ref HEAD 2>/dev/null) || return
 # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
  echo "${ref#refs/heads/}"
 }
 
 unpushed () {
-  $GIT cherry -v @{upstream} 2>/dev/null
+  git cherry -v @{upstream} 2>/dev/null
 }
 
 need_push () {
@@ -49,6 +47,11 @@ rb_prompt(){
 	else
 	  echo ""
   fi
+}
+
+ruby_version() {
+  v=$(ruby -v | awk '{ printf("%.5s", $2) }')
+  echo -ne "%{$fg_bold[yellow]%}$v%{$reset_color%}"
 }
 
 # This keeps the number of todos always available the right hand side of my
@@ -71,10 +74,14 @@ todo(){
 }
 
 directory_name(){
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%~%\/%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt) in $(directory_name) $(git_dirty)$(need_push)\n› '
+user_name(){
+  echo "%{$fg_bold[green]%}$(whoami)($(ruby_version)%{$fg_bold[green]%})%{$reset_color%}"
+}
+
+export PROMPT=$'\n$(user_name) in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
 }
