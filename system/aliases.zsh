@@ -16,6 +16,7 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 else
-  alias l='ls -Gl'
+  alias l='ls -GlAh'
+  alias ll='ls -Gl'
   alias la='ls -Gla'
 fi
