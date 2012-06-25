@@ -51,6 +51,5 @@
   authors = log --pretty=format:'%an <%ae>'
 
 [merge]
-	tool = opendiff
 	summary = true
 
