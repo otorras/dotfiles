@@ -1,5 +1,5 @@
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Dev
+export PROJECTS=~/Projects
 
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$PROJECTS/dotfiles
@@ -20,3 +20,4 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
+
