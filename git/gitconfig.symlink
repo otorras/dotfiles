@@ -53,8 +53,8 @@
 [merge]
 	summary = true
 
-[diff]
-	external = opendiff-git.sh
+#[diff]
+#	external = opendiff-git.sh
 
 [difftool]
 	prompt = false
