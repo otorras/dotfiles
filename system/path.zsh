@@ -1,4 +1,4 @@
-export PATH="./bin:$PROJECTS/ShellScripts:$HOME/.rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$ZSH/bin:$PATH"
+export PATH="./bin:$PROJECTS/ShellScripts:$HOME/.rvm/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$ZSH/bin:$HOME/android-sdks/tools:$HOME/android-sdks/platform-tools:$PATH"
 
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
