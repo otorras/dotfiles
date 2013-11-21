@@ -6,6 +6,8 @@ alias s='subl .'
 
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade'
 
+alias npmeu='npm --registry http://registry.npmjs.eu/'
+
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
 #   `brew install coreutils`
